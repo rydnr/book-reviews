@@ -37,3 +37,124 @@ I think it would be interesting to show a simple SWOT or recipe diagram, e.g.:
 ** Summary
 
 There's a bullet enumerating the 5 components of a ML system, but they're not explained in chapter 1.
+
+* Chapter 2
+
+*** Listing 2.3
+
+In Listing 2.3, I got an unexpected result, probably due to misunderstanding on my part.
+I wanted to test the method Map.withDefaultValue(), but I got an unexpected result.
+Here's my code:
+
+#+BEGIN_SRC java
+object HelloWorld {
+
+   val totalVotes = Map("Mickey" -> 52, "nom nom" -> 105)
+   val totalVotesWithDefault = Map("Mikey" -> 52, "nom nom" -> 105).withDefaultValue(-1)
+   val naiveNomNomVotes: Option[Int] = totalVotesWithDefault.get("nom nom")
+
+   def getVotes(howler: String) = {
+       totalVotesWithDefault.get(howler) match {
+           case Some(votes) => votes
+           case None => 0
+       }
+   }
+
+   def main(args: Array[String]) {
+      val nomNomVotes: Int = getVotes("nom nom")
+      val indianaVotes: Int = getVotes("Indiana")
+      println(nomNomVotes)
+      println(indianaVotes)
+   }
+}
+#+END_SRC
+
+Instead of 105, -1, it prints 105, 0.
+
+*** Listing 2.4
+
+In listing 2.4, I got an issue as well, probably because I was using an online editor (https://www.tutorialspoint.com/compile_scala_online.php):
+The compiler didn't accept calling the static method "nextInt" directly, so I had to instantiate a new Random instance.
+
+#+BEGIN_SRC java
+       Thread.sleep(new java.util.Random().nextInt(1000))
+#+END_SRC
+
+instead of
+
+#+BEGIN_SRC java
+       Thread.sleep(Random.nextInt(1000))
+#+END_SRC
+
+*** Listing 2.5
+
+I had to use a Thread.sleep(1000) in order to see the "The top dog currently has ...".
+Keep in mind the message is not formatted correctly (it says "The tog dog currently has105votes.").
+
+The text points out using futures provides benefits in terms of scaling, but I think it's not the
+key point of using futures. Instead, it's simplifying writing asynchronous code, making it seem synchronous, and leveraging multi-core architectures.
+But it's not really the silver bullet of scaling. You'll probably need to check how many concurrent threads are spawned, and for how long they live.
+
+*** Listing 2.6
+
+Again, it's probably my fault, but I get a compile error. Here's the code I was trying to compile:
+
+#+BEGIN_SRC java
+import scala.concurrent._
+import ExecutionContext.Implicits.global
+
+object HelloWorld {
+
+   val totalVotesWithDefault = Map("Mikey" -> 52, "nom nom" -> 105).withDefaultValue(0)
+
+   def getRemoteVotes(howler: String) = {
+       Thread.sleep(new java.util.Random().nextInt(1000))
+       totalVotesWithDefault(howler)
+   }
+
+   def futureRemoteVotes(howler: String) = Future {
+       getRemoteVotes(howler)
+   }
+
+
+   val timeoutDuration = 500
+   val AverageVotes = 42
+
+   val defaultVotes = Future {
+       Thread.sleep(timeoutDuration)
+       AverageVotes
+   }
+
+   def timeoutVotes(howler: String) = Future.firstCompletedOf(
+         List(getRemoteVotes(howler), defaultVotes))
+
+   def main(args: Array[String]) {
+
+     val nomNomFutureVotes = futureRemoteVotes("nom nom")
+     val mikeyFutureVotes = futureRemoteVotes("Mikey")
+     val indianaFutureVotes = futureRemoteVotes("Indiana")
+
+     val topDogVotes: Future[Int] = for {
+       nomNom <- nomNomFutureVotes
+       mikey <- mikeyFutureVotes
+       indiana <- indianaFutureVotes
+     } yield List(nomNom, mikey, indiana).max
+
+     topDogVotes onSuccess {
+       case _ => println("The top dog currently has " + topDogVotes + " votes")
+     }
+
+     Thread.sleep(10000)
+  }
+}
+#+END_SRC
+
+The error I get is
+
+#+BEGIN_SRC shell
+sh-4.3$ scalac *.scala
+HelloWorld.scala:27: error: type mismatch;
+ found   : List[Any]
+ required: TraversableOnce[scala.concurrent.Future[?]]
+         List(getRemoteVotes(howler), defaultVotes))
+#+END_SRC
