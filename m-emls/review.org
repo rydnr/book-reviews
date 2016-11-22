@@ -1,0 +1,39 @@
+* Chapter 0
+
+Page 1: features are not always known. Sometimes some of them are unknown, and get predicted (i.e. online systems).
+
+If the book is more about implementing successful ML systems, using Reactive technologies, maybe it should be stresses more.
+
+** Concepts
+Probably the concepts are introduced too fast. I think it would be better if the author describes a typical machine learning system from the outside, defining the concepts based on that example.
+The reader probably won't go back frequently to chapter 0 to clarify terminology. And in that case, the reader could be overwhelmed for nothing.
+
+** Ready or not
+This section is fine. However, the content helps clarifying what the reader needs to known, but it doesn't anticipate what will be the reward. The reader will probably want to know what she will be able to do after reading the book.
+
+* Chapter 1
+
+** An example machine learning system
+
+Great chapter, since it allows the reader to follow an approach that seemed reasonable, and helps him discover the problems afterwards.
+
+Page 9: Is Figure 1.5 / LibSVM actually Figure 4? Is it helpful to mention LibSVM here?
+
+Last paragraph of Machine Learning section is great.
+
+** When not to use reactive machine learning
+
+The last paragraph came unexpected to me. After the Coursera Machine Learning course, we were taught to build prototypes before attempting to implement a real ML system.
+I assume there will be a number of readers with the same background. While I see the point of suggesting not following the reactive path when building temporary ML systems,
+does that mean that this book makes sense when you have already built a prototype, and are thinking of building a real ML application?
+
+I think it would be interesting to show a simple SWOT or recipe diagram, e.g.:
+
+| scope                   | Target system | Technologies                              |
+|-------------------------+---------------+-------------------------------------------|
+| learning about the data | prototype     | Octave, Matlab, R, Weka, ...              |
+| Building a ML system    | production    | Home-grown, reactive-based implementation |
+
+** Summary
+
+There's a bullet enumerating the 5 components of a ML system, but they're not explained in chapter 1.
