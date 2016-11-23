@@ -158,3 +158,18 @@ HelloWorld.scala:27: error: type mismatch;
  required: TraversableOnce[scala.concurrent.Future[?]]
          List(getRemoteVotes(howler), defaultVotes))
 #+END_SRC
+
+*** Listing 2.7
+
+I had to explicitly qualify "mutable" as "scala.collection.mutable" when creating the HashMap.
+
+*** Listing 2.9
+
+I had to qualify "Actor" as "akka.actor.Actor".
+
+*** Listing 2.13
+
+It seems the training files are available from a repository, but none is mentioned.
+
+In page 26, I think the difference between training set and test samples is not clear enough.
+Particularly, the reader might not know which data could be used for testing instead of training the system.
