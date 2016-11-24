@@ -169,7 +169,22 @@ I had to qualify "Actor" as "akka.actor.Actor".
 
 *** Listing 2.13
 
-It seems the training files are available from a repository, but none is mentioned.
+It seems the training files are available from a repository, but it doesn't mention Appendix A.
 
 In page 26, I think the difference between training set and test samples is not clear enough.
 Particularly, the reader might not know which data could be used for testing instead of training the system.
+
+* Chapter 3
+
+In general, I liked the storytelling: describing the problem, proposing a typical solution, describing why it doesn't fit, and proposing an alternate approach.
+
+However, once the synchronous solution is discarded, the solution proposed is like: let's see what databases are out there and which characteristics can be helpful in this context.
+I'd find more rigorous to use a scientific approach. Each step, from data gathering to data consumption, analyze the same set of facts: does it scale? does it lose information? Were are the bottlenecks, if any?
+It'd be the same story, but without the sense of "I'd probably would choose another option at first". In other words, what if the reader is not familiar with reactive concepts and products? What if
+the reader doesn't know he doesn't know? In that case, proposing Couchbase out of the blue is probably something he won't do, because his experience won't guide him towards that path.
+Not to mention if he works for a corporation and proposing Couchbase would mean a fight ahead.
+
+As a side note, in the source code examples I'd reword the "Readings" variables, because most of the chapter involves actually *writing* them. Maybe using "Samples" or "Examples" would avoid any potential confusion.
+
+* Chapter 4
+
