@@ -188,3 +188,14 @@ As a side note, in the source code examples I'd reword the "Readings" variables,
 
 * Chapter 4
 
+In general, the chapter is several things at once:
+- Introduction to chapter 5.
+- Advises on how to face common challenges when dealing with features.
+- Source code samples used to address issues related with features, showing some helpful Scala idioms.
+
+I've had some problems trying to following the author. I found myself thinking where I was in the whole picture of the book.
+Chapter 3 was great because the problem was easy to understand, and the solution was easy to follow. The storyline was clear.
+This chapter is an information transfer, not a knowledge transfer. The reader cannot do much more than not get lost, and remind himself to get back to that chapter in the future, once he faces the issues the chapter describes.
+In particular, I'd leverage the chapter to make sure the reader knows what features are all about. I'd mention the problem of underfitting and overfitting. I had problems to see how I could choose features without analyzing the performance and accuracy of the ML system. I think that concerns could be addressed briefly.
+It would help also to recall where we are in the journey towards building a ML system. I liked the summary, because I was aware again of why this chapter was necessary. Meanwhile, while the content was interesting, I think I was missing the point all too frequently.
+
