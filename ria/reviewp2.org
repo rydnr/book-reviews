@@ -1,0 +1,130 @@
+* React in Action
+
+** Review 2
+
+*** Chapter 1
+
+Page 16. Metal model???
+
+**** Section 1.5.1
+
+The reader could install React Developer Tools (Chrome extension), and check the React components herself when visiting any of the websites linked from https://github.com/facebook/react/wiki/Sites-Using-React.
+
+**** Section 1.6
+
+Regarding the discussion about simplicity, convenience, etc., I'd also point out that React is open-source, and you can answer your own questions by inspecting the source code. React source code is well documented and worth reading.
+
+*** Chapter 2
+
+In general, and particularly in this chapter, the exercises are useful. I'd include also a kind of progress bar to show the reader the topics the author is explaining, and make her aware of where she is.
+
+**** 2.2.2
+
+I see "data-reactroot" property in the div just below the outermost div, not on the outermost div itself, as the author expects.
+
+I liked the exercise 2.2
+
+**** 2.2.4
+
+It might sound strange, but I wonder how it would end up if the author wrote this chapter in TDD style, close to Debugger-driven development.
+Something like
+
+try {
+  React.createClass({});
+  pass("React.createClass() should fail for empty objects");  
+} catch (error) {
+}
+
+Regarding the reasoning for React class vs React Element, I'd point out that the "props" in a React Class doesn't imply that the class ensures encapsulation. They provide externally-provided state.
+
+**** 2.2.5
+
+- Listing 2.4: #D forced me to re-read it several times, until I found out that the starting "this" should be emphasized and formatted as code.
+
+**** 2.3.2
+
+- Listing 2.8: #A should include also the 'handleSumbit' declaration. I was confused at first, since I didn't find 'handleSubmit' function referred in #B.
+
+*** Chapter 3
+
+**** 3.1
+
+In Page 2 and 3 the author refers to Listing 3.3, but it should be Listing 3.1 instead.
+
+In page 8, the author says "There is an entire body of academic research focused on this sort of question, ...". Maybe a footnote adding a link to external resources?
+
+The introduction in 3.2 ends with an unfinished sentence: "Fortunately".
+
+Listing 3.6, the C# mark should include also the "this.setState({..})" lines.
+
+**** 3.2.2
+
+It refers to Listing 3.8, but I guess it should probably be Listing 3.6.
+The same happens in section 3.2.3.
+
+**** 3.4
+
+Page 19: "Server-side rendering: ... You have little to NO control from the client side."
+
+I'd suggest to point out that the one-way information flow in React, means that when the user changes some text in any component, it triggers an update of the state, not just changing the value in the component.
+
+*** Chapter 4
+
+**** Section 4.1.2
+
+The reader should print Figure 4.3 and make it immediately available when developing apps in React.
+
+Why don't Listings have codepen urls anymore?
+
+**** 4.1.5
+
+Figure 4.7 is labeled as 4.6.
+
+In page 15, the text refers to figure 4.4 but it's Listing 4.5 instead.
+
+In page 16, I'm not sure of what figures the author refers in "The order should correspond with what figure 4.2 and 4.5 showed us earlier, ...".
+
+**** 4.1.6
+
+Again, another figure 4.6, and is mentioned in the text as well.
+
+**** 4.2.1
+
+Table 4.4 in the text is actually referring to Table 4.3.
+
+Incomplete sentence in page 23: "In this book, I will".
+
+**** 4.2.2
+
+I got an error when running "npm install":
+
+374023 verbose validateInstall loading [...]/letters-social/package.json for validation
+374024 verbose stack Error: The package eslint-plugin-jsx-a11y@3.0.2 does not satisfy its siblings' peerDependencies requirements!
+
+Should I create a GitHub issue?
+
+The rest of npm invocations run just fine in my environment, and work as expected.
+
+I think the "bind(this)" calls in Listing 4.9 should be explained, as in Listing 5.3 in Chapter 5.
+
+In this chapter I'm missing the exercises. Something to make sure the reader is not overwhelmed with the amount of important stuff she feels she need to be competent with.
+
+**** 5.2.3
+
+Great section. It summarizes well how user-provided data is managed as state changes in React.
+
+**** 5.2.5
+
+In Listing 5.6, the code validates the content is not longer than 300, not 160 as the legend says.
+
+I couldn't try out the demo at http://social.learnreactjs.io. I could not get past the login page.
+
+**** 5.3
+
+The author could use an activity-like diagram for Figure 5.5, so the reader can follow the interactions in order.
+
+In Listing 5.7, the remark #D could probably use a more detailed explanation. It's not self-explanatory.
+
+In Listing 5.9, #C could mention that using POST for creating remote resources is imposed by Restful APIs. For updating, it'd expect PUTs. POST is not used for "data [that] will be sent to the server", but "data to create a resource in the server".
+
+
